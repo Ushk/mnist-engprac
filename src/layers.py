@@ -55,7 +55,7 @@ class Linear(Layer):
     def param_gradients(self, dl_dy: Tensor) -> Tensor:
         self.grads['b'] = np.sum(dl_dy,axis=0)
         self.grads['W'] = self.stored_activations.T @ dl_dy
-        del self.stored_activations
+        self.stored_activations = {}
 
 
 class Sigmoid(Layer):
